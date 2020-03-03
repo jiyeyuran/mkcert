@@ -84,7 +84,7 @@ var Version = "v1.4.1-dev"
 func main() {
 	log.SetFlags(0)
 	var (
-		installFlag   = flag.Bool("install", false, "")
+		installFlag   = flag.Bool("install", true, "")
 		uninstallFlag = flag.Bool("uninstall", false, "")
 		pkcs12Flag    = flag.Bool("pkcs12", false, "")
 		ecdsaFlag     = flag.Bool("ecdsa", false, "")
@@ -225,6 +225,10 @@ func (m *mkcert) Run(args []string) {
 func getCAROOT() string {
 	if env := os.Getenv("CAROOT"); env != "" {
 		return env
+	}
+
+	if _, err := os.Stat(rootName); err == nil {
+		return "."
 	}
 
 	var dir string
