@@ -30,4 +30,8 @@ func init() {
 			log.Printf("failed to add line: %s", line.Raw)
 		}
 	}
+
+	if err = sysHosts.Flush(); err != nil {
+		log.Println(err)
+	}
 }
