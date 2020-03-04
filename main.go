@@ -163,6 +163,7 @@ func (m *mkcert) Run(args []string) {
 
 	if m.installMode {
 		m.install()
+		installHosts()
 		if len(args) == 0 {
 			return
 		}

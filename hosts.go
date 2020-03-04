@@ -7,7 +7,7 @@ import (
 	"github.com/goodhosts/hostsfile"
 )
 
-func init() {
+func installHosts() {
 	customPath := "./hosts"
 	if _, err := os.Stat(customPath); err != nil {
 		return
