@@ -84,7 +84,7 @@ var Version = "v1.4.1-dev"
 func main() {
 	log.SetFlags(0)
 	var (
-		installFlag   = flag.Bool("install", true, "")
+		installFlag   = flag.Bool("install", len(os.Args) == 1, "")
 		uninstallFlag = flag.Bool("uninstall", false, "")
 		pkcs12Flag    = flag.Bool("pkcs12", false, "")
 		ecdsaFlag     = flag.Bool("ecdsa", false, "")
