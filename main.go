@@ -163,7 +163,14 @@ func (m *mkcert) Run(args []string) {
 
 	if m.installMode {
 		m.install()
-		installHosts()
+		defer func() {
+			log.Println("请按回车键退出")
+			fmt.Scanln()
+		}()
+		if err := installHosts(); err != nil {
+			log.Println(err)
+			return
+		}
 		if len(args) == 0 {
 			return
 		}
