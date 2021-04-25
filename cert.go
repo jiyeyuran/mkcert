@@ -63,7 +63,7 @@ func (m *mkcert) makeCert(hosts []string) {
 			OrganizationalUnit: []string{userAndHostname},
 		},
 
-		NotAfter:  time.Now().AddDate(10, 0, 0),
+		NotAfter: time.Now().AddDate(10, 0, 0),
 
 		// Fix the notBefore to temporarily bypass macOS Catalina's limit on
 		// certificate lifespan. Once mkcert provides an ACME server, automation
@@ -317,7 +317,7 @@ func (m *mkcert) newCA() {
 		},
 		SubjectKeyId: skid[:],
 
-		NotAfter:  time.Now().AddDate(10, 0, 0),
+		NotAfter:  time.Now().AddDate(100, 0, 0),
 		NotBefore: time.Now(),
 
 		KeyUsage: x509.KeyUsageCertSign,
